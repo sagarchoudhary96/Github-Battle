@@ -154,3 +154,9 @@ div:hover {
 .loader, .loader * {
   will-change: transform;
 }
+
+
+/* Nav Bar*/
+.nav {
+  display: flex;
+}

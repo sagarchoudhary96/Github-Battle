@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Popular from './Popular.js'
+import { Route } from 'react-router-dom'
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <Popular/>
-      </div>
+      <Route path='/popular' render = {()=> (
+          <Popular/>
+        )}/>
+    </div>  
     )
   }
 }

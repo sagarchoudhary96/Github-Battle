@@ -73,7 +73,7 @@ class Popular extends Component {
     }.bind(this))
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.updateLanguage(this.state.languageSelected)
   }
 
