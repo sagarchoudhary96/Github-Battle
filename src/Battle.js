@@ -15,7 +15,7 @@ function PlayerPreview(props) {
       </div>
       <button
         className='reset'
-        onClick={props.onReset(props.id)}>
+        onClick={()=>{props.onReset(props.id)}}>
           Reset
       </button>
     </div>
@@ -49,7 +49,7 @@ class PlayerInput extends Component {
     })
   }
 
-  handleSubmit = (event)=> {
+  handleSubmit = (event) => {
     event.preventDefault()
     this.props.onSubmit(
       this.props.id,
@@ -99,10 +99,12 @@ class Battle extends Component {
       playerOneImage: null,
       playerTwoImage: null
     }
-  }
+
+    }
 
   handleSubmit = (id, username) => {
-    this.setState(()=> {
+      console.log("here 2")
+    this.setState(function(){
       var newState = {}
       newState[id + 'Name'] = username
       newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200'
@@ -111,7 +113,7 @@ class Battle extends Component {
   }
 
   handleReset = (id) => {
-    this.setState(()=> {
+    this.setState(function(){
       var newState = {}
       newState[id + 'Name'] = ''
       newState[id + 'Image'] = null
@@ -131,8 +133,7 @@ class Battle extends Component {
           {!player1_name &&
             <PlayerInput
               id='playerOne'
-              username={player1_name}
-              label='player One'
+              label='Player One'
               onSubmit = {this.handleSubmit} />
           }
 
@@ -147,8 +148,7 @@ class Battle extends Component {
           {!player2_name &&
             <PlayerInput
               id='playerTwo'
-              username={player2_name}
-              label='player Two'
+              label='Player Two'
               onSubmit={this.handleSubmit} />
           }
 
