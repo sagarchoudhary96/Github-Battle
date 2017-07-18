@@ -12,17 +12,11 @@ class App extends Component {
       <div className="container">
         <Nav/>
         <Switch>
-          <Route exact path='/' render = {()=>(
-              <Home />
-            )}/>
+          <Route exact path='/' component={Home}/>
 
-          <Route exact path='/battle' render = {() => (
-              <Battle />
-            )}/>
+          <Route exact path='/battle' component={Battle}/>
 
-          <Route  path='/popular' render = {()=> (
-              <Popular/>
-            )}/>
+          <Route  path='/popular' component={Popular}/>
           <Route render =  {() => (
                 <p>Error 404 Not Found :(</p>
             )} />

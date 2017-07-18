@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 import { PropTypes } from 'prop-types'
+import {Link} from 'react-router-dom'
 
 function PlayerPreview(props) {
   return (
@@ -123,6 +123,8 @@ class Battle extends Component {
   }
 
   render () {
+    var match = this.props.match
+    console.log(match)
     var player1_name = this.state.playerOneName
     var player2_name = this.state.playerTwoName
     var player1_image = this.state.playerOneImage
@@ -160,6 +162,17 @@ class Battle extends Component {
               id='playerTwo'/>
           }
         </div>
+
+        {player1_image && player2_image &&
+        <Link
+            className="button"
+            to = {{
+                pathname: match.url + '/results',
+                search: 'playerOneName=' + player1_name + '&playerTwoName=' + player2_name
+        }}>
+            Battle
+        </Link>
+        }
       </div>
     )
   }
