@@ -6,43 +6,40 @@ var secret = 'YOUR_GITHUB_SECRET_ID'
 var params = '?client_id=' + id + '&client_secret=' + secret
 
 
-get_user_profile = (username) => {
+function get_user_profile (username) {
   return axios.get('https://api.github.com/users/' + username + params)
-  .then((user)=> {
+  .then(function(user){
     return user.data
   })
 }
 
 
-get_repos_info = (username) => {
+function get_repos_info(username) {
   return axios.get('https://api.github.com/users/' + username + '/repos' + params + '&per_page=100')
-  .then((repos)=> {
-    return user.data
-  })
 }
 
 
-get_star_count (repos) {
+function get_star_count(repos) {
   return repos.data.reduce((count, repo) => {
     return count + repo.stargazers_count
   },0)
 }
 
 
-calculate_score = (profile, repos) => {
+function calculate_score(profile, repos) {
   var followers = profile.followers
   var totalStars = get_star_count(repos)
   return (followers*3) + totalStars
 }
 
 
-handle_error = (error) => {
+function handle_error(error) {
   console.warn(error)
   return null
 }
 
 
-get_user_data = (player) => {
+function get_user_data(player) {
   return axios.all([
     get_user_profile(player),
     get_repos_info(player)
@@ -57,7 +54,7 @@ get_user_data = (player) => {
 }
 
 
-sort_players = (players) => {
+function sort_players(players) {
   return players.sort((a,b)=> (
     b.score-a.score
   ))

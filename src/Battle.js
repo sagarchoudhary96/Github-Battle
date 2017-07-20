@@ -1,34 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import {Link} from 'react-router-dom'
-
-function PlayerPreview(props) {
-  return (
-    <div>
-      <div className='column'>
-        <img
-          className='avatar'
-          src={props.avatar}
-          alt={'Avatar for' + props.username}
-          />
-        <h2 className='username'>@{props.username}</h2>
-      </div>
-      <button
-        className='reset'
-        onClick={()=>{props.onReset(props.id)}}>
-          Reset
-      </button>
-    </div>
-  )
-}
-
-PlayerPreview.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
-}
-
+import PlayerPreview from './PlayerPreview'
 
 class PlayerInput extends Component {
   constructor(props) {
@@ -142,9 +115,13 @@ class Battle extends Component {
           {player1_image !== null &&
             <PlayerPreview
               avatar={player1_image}
-              username={player1_name}
-              onReset={this.handleReset}
-              id='playerOne'/>
+              username={player1_name}>
+              <button
+                className='reset'
+                onClick={()=>{this.handleReset('playerOne')}}>
+                  Reset
+              </button>
+            </PlayerPreview>
           }
 
           {!player2_name &&
@@ -157,9 +134,13 @@ class Battle extends Component {
           {player2_image !== null &&
             <PlayerPreview
               avatar={player2_image}
-              username={player2_name}
-              onReset={this.handleReset}
-              id='playerTwo'/>
+              username={player2_name}>
+              <button
+                className='reset'
+                onClick={()=>{this.handleReset('playerTwo')}}>
+                  Reset
+              </button>
+            </PlayerPreview>
           }
         </div>
 

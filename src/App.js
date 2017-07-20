@@ -15,7 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/battle' component={Battle}/>
-          <Route path='/battle/results' component={results}/>
+          <Route path='/battle/results' component={Results}/>
           <Route  path='/popular' component={Popular}/>
           <Route render =  {() => (
                 <p>Error 404 Not Found :(</p>
