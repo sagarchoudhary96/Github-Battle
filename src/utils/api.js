@@ -25,11 +25,24 @@ function get_star_count(repos) {
   },0)
 }
 
+function get_watchers_count(repos) {
+  return repos.data.reduce((count, repo) => {
+    return count + repo.watchers_count
+  },0)
+}
+
+function get_forks_count(repos) {
+  return repos.data.reduce((count, repo) => {
+    return count + repo.forks_count
+  },0)
+}
 
 function calculate_score(profile, repos) {
   var followers = profile.followers
   var totalStars = get_star_count(repos)
-  return (followers*3) + totalStars
+  var totalWatchers = get_watchers_count(repos)
+  var totalForks = get_forks_count(repos)
+  return (followers*3) + totalStars + totalForks + totalWatchers
 }
 
 
